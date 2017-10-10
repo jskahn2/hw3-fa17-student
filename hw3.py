@@ -32,8 +32,10 @@
 #              [3, 6, 9]]
 # 
 def matrix_transpose(A):
-    pass
-
+    for row in A :
+        print(row)
+    result = [[A[j][i] for j in range(len(A))] for i in range(len(A[0]))]
+    return result
 
 
 # Max Element in 2-D Array
@@ -58,9 +60,15 @@ def matrix_transpose(A):
 #             -100
 # 
 def max_2d_array(grid):
-    pass
+    maxItem = grid[0][0]
+    for subarray in grid:
+        for item in subarray:
+            if item > maxItem:
+                maxItem = item
+    return maxItem
 
-
+grid = [[-300,  200],[-300, -100]]
+#print(max_2d_array(grid))
 
 # Binary Search
 # 
@@ -87,8 +95,20 @@ def max_2d_array(grid):
 #             None
 # 
 def binary_search(arr, target):
-    pass
-
+    mid = (len(arr)) // 2
+    if len(arr) < 1:
+        return None
+    if target == arr[mid]:
+        return mid
+    elif target > arr[mid]:
+        return mid + binary_search(arr[mid:],target)
+    elif target < arr[mid]:
+        return binary_search(arr[:mid],target)
+    else:
+        return None
+arr = [1, 2, 3, 4, 5,6,7,8,9]
+target = 7
+#print(binary_search(arr, target))
 
 
 # Sorted Matrix Search
@@ -122,9 +142,19 @@ def binary_search(arr, target):
 #             None
 # 
 def search_2d_array(arr, target):
-    pass
+    row = 0
+    col = 0
+    for subarray in arr:
+        for item in subarray:
+            if item == target:
+                return [row, col]
+            col += 1
+        row += 1
+        col = 0
+    return None
 
 
+print (search_2d_array([[1, 2, 3], [8, 11, 16], [23, 24, 25]], 8))
 
 # Maximum Sum Subarray
 # 
@@ -146,7 +176,18 @@ def search_2d_array(arr, target):
 #             6
 # 
 def max_sum_subarray(arr):
-    pass
+    maxNum = -10000000000
+    possibleMax = 0
+      
+    for i in range(0, len(arr)):
+        possibleMax += arr[i]
+        if (maxNum < possibleMax):
+            maxNum = possibleMax
+ 
+        if possibleMax < 0:
+            possibleMax = 0  
+    return maxNum
+
 
 
 
