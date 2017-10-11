@@ -154,7 +154,7 @@ def search_2d_array(arr, target):
     return None
 
 
-print (search_2d_array([[1, 2, 3], [8, 11, 16], [23, 24, 25]], 8))
+#print (search_2d_array([[1, 2, 3], [8, 11, 16], [23, 24, 25]], 8))
 
 # Maximum Sum Subarray
 # 
